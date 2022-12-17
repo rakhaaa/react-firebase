@@ -5,7 +5,8 @@
   .newContainer {
     flex: 6;
 
-    .top, .bottom {
+    .top,
+    .bottom {
       --webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
       box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
       padding: 20px;
@@ -68,6 +69,11 @@
             color: white;
             font-weight: bold;
             cursor: pointer;
+
+            &:disabled {
+              background-color: rgba(0, 128, 128, 0.842);
+              cursor: not-allowed;
+            }
           }
         }
       }
