@@ -14,7 +14,7 @@ const New = ({ title, datas }) => {
   const [data, setData] = useState({});
 
   const handleInput = (e) => {
-    const id = e.target.value;
+    const id = e.target.id;
     const value = e.target.value;
 
     setData({...data, [id]:value});
