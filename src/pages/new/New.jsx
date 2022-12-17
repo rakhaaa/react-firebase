@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
@@ -15,9 +16,11 @@ const New = ({ title, datas }) => {
 
   const [per, setPer] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const uploadFile = () => {
-      const name = new Date().getTime() + file.name;
+      const name = new Date().getTime() + "_" + file.name;
       const storageRef = ref(storage, name);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
@@ -70,6 +73,7 @@ const New = ({ title, datas }) => {
         ...data,
         timeStamp: serverTimestamp(),
       });
+      navigate(-1);
     } catch (err) {
       console.log(err);
     }
@@ -96,12 +100,12 @@ const New = ({ title, datas }) => {
           <div className="right">
             <form onSubmit={handleSubmit}>
               <div className="formInput">
-                <label htmlFor="file">
+                <label htmlFor="image">
                   Image: <DriveFolderUploadOutlined className="icon" />
                 </label>
                 <input
                   type="file"
-                  id="file"
+                  id="image"
                   onChange={(e) => setFile(e.target.files[0])}
                   style={{ display: "none" }}
                 />

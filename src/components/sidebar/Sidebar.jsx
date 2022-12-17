@@ -11,14 +11,17 @@ import {
   PsychologyOutlined,
   SettingsApplications,
   AccountCircleOutlined,
-  ExitToApp
+  ExitToApp,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { DarkModeContext } from "../../context/darkModeContext";
+// import { DarkModeContext } from "../../context/darkModeContext";
+import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 
 const Sidebar = () => {
-  const { dispatch } = useContext(DarkModeContext);
+  // const { dispatch } = useContext(DarkModeContext);
+  const { dispatch } = useContext(AuthContext);
+  
   return (
     <div className="sidebar">
       <div className="top">
@@ -84,7 +87,7 @@ const Sidebar = () => {
             <AccountCircleOutlined className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={() => dispatch({ type: "LOGOUT"})}>
             <ExitToApp className="icon" />
             <span>Logout</span>
           </li>
